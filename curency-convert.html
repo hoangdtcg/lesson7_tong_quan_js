@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+
+<body>
+    <!-- <img src="us.png" alt=""> -->
+    <form>
+        <fieldset>
+            <legend>Chuyển đổi tiền tệ</legend>
+            <input oninput="convertHtml()" id="money" type="number" placeholder="Nhập USD vào đây" value="10">
+            <select onchange="convertHtml()" id="from">
+                <option value="23000">VND</option>
+                <option selected value="1" style="background-image:url(us.png);">USD</option>
+                <option value="0.85">EUR</option>
+            </select>
+            <!-- <input type="number" placeholder="ratio1" id="ratio1"> -->
+
+            <select onchange="convertHtml()" id="to">
+                <option value="23000">VND</option>
+                <option value="1">USD</option>
+                <option value="0.85">EUR</option>
+            </select>
+            <!-- <input type="number" placeholder="ratio2" id="ratio2"> -->
+            <!-- <button type="button" onclick="convertHtml()">Chuyển đổi</button> -->
+            <p id="result">0</p>
+        </fieldset>
+    </form>
+
+    <script>
+        function convert() {
+            let usd = prompt("Nhap USD");
+            let ratio = 23000;
+            let vnd = usd * ratio;
+            alert(vnd);
+        }
+
+        function convertHtml() {
+            let money = document.getElementById('money').value;
+            let ratio1 = document.getElementById('from').value;
+            let ratio2 = document.getElementById('to').value;
+            let result = money * ratio2 / ratio1;
+            document.getElementById('result').innerText = result.toFixed(2);
+        }
+    </script>
+</body>
+
+</html>
